@@ -8,9 +8,9 @@ RUN dnf -y update
 #
 RUN dnf -y install \
     curl \
+    less \
     iproute \
     iputils \
-    net-tools \
     net-tools \
     neovim \
     openssh-clients \
@@ -27,4 +27,8 @@ RUN pip3 install --no-input aiorun
 # to make me happy
 #
 ADD bashrc /root/.bashrc
-ADD vimrc /root/.nvimrc
+ADD vimrc /root/.vimrc
+# setup neovim because running vim kills the container in GNS3 
+# as it sends a non-utf-8 char on startup
+RUN mkdir -p /root/.config/nvim \
+    && ln -s /root/.vimrc /root/.config/nvim/init.vim 

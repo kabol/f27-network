@@ -12,7 +12,6 @@ RUN dnf -y install \
     iproute \
     iputils \
     net-tools \
-    net-tools \
     neovim \
     openssh-clients \
     python3-pip \
